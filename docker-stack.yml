@@ -1,0 +1,19 @@
+version: "3.4"
+services:
+  frontend:
+    image: miel1980/greeting-frontend
+    ports:
+      - 80:80
+    networks:
+      - greeting-app-network
+  backend:
+    image: miel1980/greeting-rest-service
+    hostname: backend
+    ports:
+      - 12345:12345
+    networks:
+      - greeting-app-network
+
+networks:
+  greeting-app-network:
+    driver: overlay

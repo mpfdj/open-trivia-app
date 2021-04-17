@@ -1,6 +1,8 @@
-package com.example.restservice.services;
+package api.trivia.open.services;
 
-import com.example.restservice.model.es.Question;
+import api.trivia.open.model.es.Question;
+import api.trivia.open.util.Util;
+import lombok.extern.slf4j.Slf4j;
 import org.jsonbuilder.JsonBuilder;
 import org.jsonbuilder.implementations.gson.GsonAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,8 @@ import org.springframework.data.elasticsearch.core.query.StringQuery;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OpenTriviaSearchService {
+@Slf4j
+public class TestService {
 
     private static final String ES_INDEX = "open-trivia";
 
@@ -20,21 +23,24 @@ public class OpenTriviaSearchService {
     private ElasticsearchOperations elasticsearchOperations;
 
 
-    public Question testESGetADoc() {
+    public Question test() {
         String query = new JsonBuilder(new GsonAdapter())
                 .object("query_string")
                 .object("query", "3")
                 .object("fields").array(new String[]{"_id"})
                 .build().toString();
 
+        log.info(Util.toPrettyFormat(query));
+
         Query searchQuery = new StringQuery(query);
 
-        SearchHits<Question> questions = elasticsearchOperations.search(
-                searchQuery,
-                Question.class,
-                IndexCoordinates.of(ES_INDEX));
+        SearchHits<Question> questions = elasticsearchOperations.search(searchQuery, Question.class, IndexCoordinates.of(ES_INDEX));
 
-        return questions.getSearchHit(0).getContent();
+        Question question = questions.getSearchHit(0).getContent();
+
+        log.info(question.toString());
+
+        return question;
     }
 
 

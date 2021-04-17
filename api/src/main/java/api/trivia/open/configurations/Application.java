@@ -1,4 +1,4 @@
-package com.example.restservice.configurations;
+package api.trivia.open.configurations;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +14,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Collections;
 
-@SpringBootApplication(scanBasePackages = {"com.example.restservice"})
-@EnableElasticsearchRepositories("com.example.restservice")
-public class RestServiceApplication {
+@SpringBootApplication(scanBasePackages = {"api.trivia.open"})
+@EnableElasticsearchRepositories("api.trivia.open")
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(RestServiceApplication.class);
+        SpringApplication app = new SpringApplication(Application.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "10001"));
         app.run(args);
     }
@@ -36,8 +36,7 @@ public class RestServiceApplication {
 
     @Bean
     public RestHighLevelClient client() {
-        ClientConfiguration clientConfiguration
-                = ClientConfiguration.builder()
+        ClientConfiguration clientConfiguration = ClientConfiguration.builder()
                 .connectedTo("localhost:9200")
                 .build();
 

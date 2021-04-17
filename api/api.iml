@@ -80,7 +80,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-elasticsearch:4.1.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-elasticsearch:4.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.4.5" level="project" />
@@ -139,6 +139,9 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Maven: org.elasticsearch.plugin:mapper-extras-client:7.9.3" level="project" />
     <orderEntry type="library" name="Maven: org.elasticsearch.plugin:aggs-matrix-stats-client:7.9.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.4" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.4" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.4" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.16" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
@@ -153,8 +156,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.2" level="project" />
   </component>
 </module>

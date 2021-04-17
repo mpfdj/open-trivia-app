@@ -1,4 +1,4 @@
-package com.example.restservice.model.es;
+package api.trivia.open.model.es;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
