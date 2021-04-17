@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "question": {
+      "type": "text"
+    },
+    "type": {
+      "type": "keyword"
+    },
+    "answer": {
+      "type": "text"
+    },
+    "choices": {
+      "type": "text"
+    }
+  }
+}
