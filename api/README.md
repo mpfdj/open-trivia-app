@@ -15,3 +15,7 @@ docker exec -it greeting-rest-service bash
 
 # Run in the foreground for debugging
 docker container run --name greeting-rest-service -p 12345:12345 miel1980/greeting-rest-service
+
+# Some resources on github.com
+https://github.com/Saseke/poseidon
+https://github.com/apache/usergrid
