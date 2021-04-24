@@ -26,7 +26,6 @@ import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 import static org.elasticsearch.search.aggregations.AggregationBuilders.terms;
 
 @Service
-@Slf4j
 public class OpenTriviaService {
 
 // https://www.baeldung.com/spring-data-elasticsearch-queries
@@ -66,7 +65,7 @@ public class OpenTriviaService {
     }
 
 
-    public Question getQuestion(String category) {
+    public Question getQuestionByCategory(String category) {
 
         MatchQueryBuilder matchQuery = matchQuery("category", category);
         PageRequest pageRequest = PageRequest.of(1,1);
@@ -81,6 +80,21 @@ public class OpenTriviaService {
         SearchHits<Question> searchHits = elasticsearchOperations.search(searchQuery, Question.class, IndexCoordinates.of(ES_INDEX));
 
         return searchHits.getSearchHits().get(0).getContent();
+    }
+
+
+    public Question getQuestionById(String id) {
+
+        MatchQueryBuilder matchQuery = matchQuery("_id", id);
+
+        NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(matchQuery)
+                .build();
+
+        SearchHits<Question> searchHits = elasticsearchOperations.search(searchQuery, Question.class, IndexCoordinates.of(ES_INDEX));
+
+        return searchHits.getSearchHits().get(0).getContent();
+
     }
 
 
