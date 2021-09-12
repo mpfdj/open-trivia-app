@@ -18,7 +18,8 @@
             };
 
             var name = document.getElementById("txtName").value;
-            var request = new Request('http://greeting-app_backend:12345/greeting?name=' + name, init);
+            // var request = new Request('http://greeting-app_backend:10001/greeting?name=' + name, init);
+            var request = new Request('http://localhost:10001/greeting?name=' + name, init);
 
             fetch(request)
                 .then(response => {

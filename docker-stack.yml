@@ -1,19 +1,22 @@
+### IMPORTANT ###
+# This file needs to be refactored. Check if the image names are up-to-date
+
 version: "3.4"
 services:
   frontend:
-    image: miel1980/greeting-frontend
+    image: miel1980/open-trivia-frontend
     ports:
       - 80:80
     networks:
-      - greeting-app-network
+      - open-trivia-app-network
   backend:
-    image: miel1980/greeting-rest-service
+    image: miel1980/open-trivia-api
     hostname: backend
     ports:
-      - 12345:12345
+      - 10001:10001
     networks:
-      - greeting-app-network
+      - open-trivia-app-network
 
 networks:
-  greeting-app-network:
+  open-trivia-app-network:
     driver: overlay

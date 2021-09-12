@@ -9,12 +9,12 @@ mvn clean spring-boot:run
 java -jar target/rest-service-0.0.1-SNAPSHOT.jar
 
 # Docker commands
-docker image build -t miel1980/greeting-rest-service .
-docker container run --name greeting-rest-service -d -p 12345:12345 miel1980/greeting-rest-service
-docker exec -it greeting-rest-service bash
+docker image build -t miel1980/open-trivia-api .
+docker container run --name open-trivia-api -d -p 10001:10001 miel1980/open-trivia-api
+docker exec -it open-trivia-api bash
 
 # Run in the foreground for debugging
-docker container run --name greeting-rest-service -p 12345:12345 miel1980/greeting-rest-service
+docker container run --name open-trivia-api -p 10001:10001 miel1980/open-trivia-api
 
 # Some resources on github.com
 https://github.com/Saseke/poseidon
