@@ -35,4 +35,10 @@ public class OpenTriviaServiceTest {
         System.out.println(question);
     }
 
+    @Test
+    public void testGetQuestionsByCategory() {
+        List<Question> questions = openTriviaService.getQuestionsByCategory("music", 10);
+        questions.forEach(q -> System.out.println(q));
+    }
+
 }

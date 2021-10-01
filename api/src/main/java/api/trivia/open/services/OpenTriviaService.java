@@ -94,8 +94,31 @@ public class OpenTriviaService {
         SearchHits<Question> searchHits = elasticsearchOperations.search(searchQuery, Question.class, IndexCoordinates.of(ES_INDEX));
 
         return searchHits.getSearchHits().get(0).getContent();
-
     }
+
+
+    public List<Question> getQuestionsByCategory(String category, int amount) {
+
+        MatchQueryBuilder matchQuery = matchQuery("category", category);
+        PageRequest pageRequest = PageRequest.of(0,amount);
+
+        FunctionScoreQueryBuilder functionScore = QueryBuilders.functionScoreQuery(matchQuery, ScoreFunctionBuilders.randomFunction());
+
+        NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(functionScore)
+                .withPageable(pageRequest)
+                .build();
+
+        SearchHits<Question> searchHits = elasticsearchOperations.search(searchQuery, Question.class, IndexCoordinates.of(ES_INDEX));
+
+        List<Question> result = new ArrayList<>();
+        searchHits.getSearchHits().forEach(sh -> {
+           result.add(sh.getContent());
+        });
+
+        return result;
+    }
+
 
 
 }

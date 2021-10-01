@@ -9,6 +9,7 @@ import api.trivia.open.services.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,6 +38,7 @@ public class Controller {
     public GetQuestionResponse getQuestion(@RequestParam String category) {
         Question question = openTriviaService.getQuestionByCategory(category);
 
+        // Filter out the answer
         GetQuestionResponse getQuestionResponse = GetQuestionResponse.builder()
                 .id(question.getId())
                 .category(question.getCategory())
@@ -54,5 +56,30 @@ public class Controller {
         String answer = request.getAnswer();
         return openTriviaDelegate.isAnswerOk(id, answer);
     }
+
+
+    @GetMapping("/get-questions")
+    public List<GetQuestionResponse> getQuestions(@RequestParam String category, @RequestParam int amount){
+        List<GetQuestionResponse> response = new ArrayList<>();
+
+        List<Question> questions = openTriviaService.getQuestionsByCategory(category, amount);
+
+        questions.forEach(q ->{
+            GetQuestionResponse result = GetQuestionResponse.builder()
+                    .id(q.getId())
+                    .category(q.getCategory())
+                    .question(q.getQuestion())
+                    .type(q.getType())
+                    .choices(q.getChoices())
+                    .answer(q.getAnswer())
+                    .build();
+            response.add(result);
+        });
+
+        return response;
+    }
+
+
+
 
 }
